@@ -1,0 +1,18 @@
+| Método | Descripción |
+| --- | --- |
+| `read()` | Lee y retorna todo el contenido del archivo |
+| `readlines()` | Lee todo el contenido del archivo y retorna una lista con cada línea. |
+| `write()` | Escribe contenidos en un archivo. |
+| `close()` | Cierra el archivo |
+| `detach()` | separa un flujo de datos crudo de un búfer |
+| `fileno()` | Devuelve un número que representa el archivo o flujo de datos, desde la perspectiva del sistema operativo. |
+| `flush()` | Desvía los datos del búfer al sistema operativo, asegurando que los datos escritos se guarden inmediatamente. |
+| `isatty()` | Devuelve `True` si el flujo de archivo es interactivo (es decir, si se conecta a un terminal). |
+| `readable()` | Devuelve `True` si el flujo de archivo se puede leer. |
+| `readline()` | Lee una línea del archivo. |
+| `seek()` | Cambia la posición del archivo, permitiendo que empieces a leer o escribir desde otra ubicación. |
+| `seekable()` | Devuelve `True` si el archivo permite cambiar su posición de lectura. |
+| `tell()` | Devuelve la posición actual del archivo |
+| `truncate()` | Cambia el tamaño del archivo al tamaño especificado |
+| `writable()` | Devuelve `True` si el archivo puede escribirse. |
+| `writelines()` |  Escribe una lista de cadenas en el archivo, sin agregar saltos de línea automáticamente. |

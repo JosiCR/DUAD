@@ -1,0 +1,12 @@
+Ver videos en YouTube
+
+1. inicio
+2. Buscar un dispositivo en el cual pueda utilizar YouTube
+3. Encender el dispositivo
+4. Descargar  la aplicación de YouTube
+5. Buscar la aplicación de YouTube en el dispositivo
+6. Ingresar a la aplicación 
+7. Escoger el video que queramos ver 
+8. Seleccionar el video
+9. Disfrutar el video 
+10. Fin
