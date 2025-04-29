@@ -31,9 +31,11 @@ def view_top_3():
     if len(students) < 3:
         print("Not enough students registered.")
         return
-    top_students = sorted(students, key=lambda x: sum(x[subj] for subj in ["Spanish", "English", "Social Studies", "Science"]) / 4, reverse=True)[:3]
+    
+    top_students = sorted(students, key=lambda x: (x["Spanish"] + x["English"] + x["Social Studies"] + x["Science"]) / 4, reverse=True)[:3]
     for student in top_students:
-        print(student)
+        average = (student["Spanish"] + student["English"] + student["Social Studies"] + student["Science"]) / 4
+        print(f"Name: {student['name']}, Average: {average:.2f}")
 
 def calculate_overall_average():
     if not students:

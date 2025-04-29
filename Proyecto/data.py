@@ -13,11 +13,15 @@ def import_from_csv():
     try:
         with open("students.csv", "r") as file:
             reader = csv.DictReader(file)
-            global students
-            students = [
-                {"name": row["name"], "section": row["section"], "Spanish": float(row["Spanish"]), "English": float(row["English"]), "Social Studies": float(row["Social Studies"]), "Science": float(row["Science"])}
-                for row in reader
-            ]
+            students.clear()
+            new_students = []
+            for row in reader:
+                row["Spanish"] = float(row["Spanish"])
+                row["English"] = float(row["English"])
+                row["Social Studies"] = float(row["Social Studies"])
+                row["Science"] = float(row["Science"])
+                new_students.append(row)
+        students.extend(new_students)
         print("Data successfully imported.")
     except FileNotFoundError:
         print("No previously exported CSV file found.")
