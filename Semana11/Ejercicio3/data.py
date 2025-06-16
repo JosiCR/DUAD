@@ -27,4 +27,4 @@ def import_from_csv():
             students_list.append(student)
         print("Data successfully imported.")
     except FileNotFoundError:
-        print("No previously exported CSV file found.")
+        print("Not previously exported CSV file found.")
