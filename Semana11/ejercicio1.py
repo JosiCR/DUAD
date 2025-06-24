@@ -1,8 +1,16 @@
+import math
+
 class circle:
-    radius = 40
+    
+    def __init__(self, radius):
+        self.radius = radius
+
 
     def get_area(self):
-        print("The area is", circle.radius)
+       return math.pi * self.radius ** 2
 
-area = circle()
-area.get_area()
+
+c1 = circle(10)
+c2 = circle(3)
+print(c1.get_area())
+print(c2.get_area())

@@ -1,5 +1,5 @@
 
-class person:
+class Person:
     def __init__(self, name):
         self.name = name
 
@@ -10,30 +10,30 @@ class Bus:
         self.passengers = []
     
 
-    def add_passengers (self, person):
+    def add_passengers (self, Person):
         if len(self.passengers) < self.max_passengers:
-            self.passengers.append(person)
-            print(f"{person.name} se subio al bus.")
+            self.passengers.append(Person)
+            print(f"{Person.name} se subio al bus.")
         else:
             print("El bus esta lleno. No se pueden subir mas personas.")
     
 
-    def remove_passenger(self, person): 
-        if person in self.passengers:
-            self.passengers.remove(person)
-            print(f"{person.name} se bajo del bus")
+    def remove_passenger(self, Person): 
+        if Person in self.passengers:
+            self.passengers.remove(Person)
+            print(f"{Person.name} se bajo del bus")
         else:
-            print(f"{person.name} no esta en el bus")
+            print(f"{Person.name} no esta en el bus")
 
 
 Bus = Bus(5)
 
-p1 = person("Josias")
-p2 = person("Lucas")
-p3 = person("Nicole")
-p4 = person("Amanda")
-p5 = person("Sheryl")
-p6 = person("Josue")
+p1 = Person("Josias")
+p2 = Person("Lucas")
+p3 = Person("Nicole")
+p4 = Person("Amanda")
+p5 = Person("Sheryl")
+p6 = Person("Josue")
 
 Bus.add_passengers(p1)
 Bus.add_passengers(p2)

@@ -39,7 +39,7 @@ def view_top_3():
         print(f"Name: {s.name}, Average: {s.average():.2f}")
 
 def calculate_overall_average():
-    if not Students:
+    if not students_list:
         print("No students registered.")
         return
     overall_average = sum(s.average() for s in students_list) / len(students_list)
