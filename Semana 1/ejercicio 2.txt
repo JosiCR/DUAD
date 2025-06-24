@@ -1,0 +1,44 @@
+Rutina Diaria
+
+1. inicio
+2. Despertarse
+3. si sigue con sueño:
+    1. Seguir durmiendo
+4. si no tiene sueño:
+    1. Levantarse de la cama
+5. Buscar desayuno
+6. Si no hay cereal y leche:
+    1. comer huevos con algo mas
+7. sino, si hay cereal y leche:
+    1. Comer cereal con leche
+8. si quiere repetir:
+    1. Servirse otro plato
+9. sino:
+    1. Levantarse a lavar el plato
+10. Buscar el paño para ir a bañarse
+11. tomar el paño
+12. subir al baño 
+13. Abrir la ducha
+14. Si hay agua caliente y hay una rasuradora y también hay jabón:
+    1. Rasurarse
+15. sino, si hay agua fría y shampoo y acondicionador:
+    1. Lavarse el pelo
+16. cerrar la ducha
+17. tomar el paño
+18. secarse con el paño
+19. Mientras no quede seco:
+    1. Seguir secándose con el paño
+20.  Vestirse 
+21. Salir del baño
+22. poner la ropa sucia en la canasta de ropa sucia
+23. bajar al cuarto
+24. Decidir que hacer con mi tiempo
+25. por cada idea que tenga de lo que podría hacer:
+    1. Pensar en que tan urgente es
+    2. ver si puedo hacerlo de una vez 
+    3. Cuantas ganas tengo de hacerlo
+    4. Mientras la idea de lo que puedo hacer sea importante:
+        1. hacerlo de una vez
+    5. Mientas no tenga nada importante que hacer:
+        1. jugar videojuegos o tocar piano o salir con amigos
+26. Fin

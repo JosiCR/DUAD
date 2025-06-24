@@ -1,0 +1,15 @@
+1. Inicio
+2. Definir `tiempo en segundos`
+3. Definir `10 minutos`
+4. Definir `segundos faltantes`
+5. Mostrar “Ingrese el tiempo en segundos”
+6. Pedir `tiempo en segundos`
+7. `10 minutos` = 600
+8. Si ( `tiempo en segundos` < `10 minutos` ) entonces
+    1. `segundos faltantes` = `10 minutos` - `tiempo en segundos`
+    2. Mostrar “ La cantidad de segundos que te faltan son”
+    3. Mostrar `segundos faltantes`
+9. Sino
+    1. Mostrar “ Mayor “
+10. FinSi
+11. Fin

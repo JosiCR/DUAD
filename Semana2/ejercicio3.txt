@@ -1,0 +1,13 @@
+1. Inicio
+2. Definir `numero`
+3. Definir `suma`
+4. Mostrar “Ingrese el numero”
+5. Pedir `numero`
+6. `suma` = 0
+7. Mientras que ( `numero` > 0) repetir:
+    1. `suma` = `suma` + `numero`
+    2. `numero` = `numero` - 1
+8. FinMientras
+9. Mostrar “ La suma de todos los números desde 1 hasta el numero ingresado es: “
+10. Mostrar `suma`
+11. Fin
