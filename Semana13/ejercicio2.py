@@ -4,9 +4,9 @@ def only_numbers(func):
             if not isinstance(value, (int, float)):
                 raise Exception(f"argument {value} is not a number")
             
-        for key, value in kwargs.items():
+        for key, value in kwargs.values():
             if not isinstance(value, (int, float)):
-                raise Exception(f"argument {key} = {value} is not a number")
+                raise Exception(f"argument {value} is not a number")
 
         return func(*args, **kwargs)
     return wrapper
