@@ -1,12 +1,36 @@
-number_list = [5, 3, 8, 4, 2]
+def bubble_sort(numbers, in_place=True):
 
-for i in range(len(number_list)):
-    swapped = False
-    for n in range (len(number_list) - i - 1):
-        if number_list[n] > number_list[n + 1]:
-            number_list[n], number_list[n + 1] = number_list[n + 1], number_list[n]
-            swapped = True
-    if not swapped:
-        break
+    if not in_place:
+        numbers = numbers[:]
 
-print(f"Lista ordenada: {number_list}")
+    for i in range(len(numbers)):
+        swapped = False
+        for j in range(len(numbers) - i - 1):
+            if numbers[j] > numbers[j + 1]:
+                numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]
+                swapped = True
+        if not swapped:
+            break
+
+    return numbers
+
+
+#        pruebas 
+
+print("Lista vacía:", bubble_sort([]))
+print("Un elemento:", bubble_sort([42]))
+print("Ya ordenada:", bubble_sort([1, 2, 3, 4]))
+print("Invertida:", bubble_sort([4, 3, 2, 1]))
+print("Con repetidos:", bubble_sort([3, 1, 2, 1, 3]))
+
+# Probando in_place y copia
+
+# modifica la original
+original = [5, 3, 8, 4, 2]
+print("Ordenada (in-place):", bubble_sort(original))  
+print("Original después:", original)
+
+# no modifica
+orig2 = [5, 3, 8, 4, 2]
+print("Ordenada (copia):", bubble_sort(orig2, in_place=False))  
+print("Orig2 sigue igual:", orig2)
