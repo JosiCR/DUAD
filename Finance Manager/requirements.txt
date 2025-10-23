@@ -1,0 +1,8 @@
+# Librería para la interfaz gráfica (versión oficial desde el servidor privado)
+PySimpleGUI>=5.0.8.3 --extra-index-url https://PySimpleGUI.net/install
+
+# Librería para pruebas unitarias
+pytest==7.4.2
+
+
+
