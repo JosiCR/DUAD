@@ -2,7 +2,7 @@ import PySimpleGUI as sg
 from datetime import date
 from logic import FinanceManager
 from persistence import Persistence
-from utils import parse_date_str, format_currency
+from utils import parse_date_str, format_currency, validate_positive_amount
 
 class GUI:
     def __init__(self):
@@ -99,32 +99,34 @@ class GUI:
                     sg.popup_error("Error adding category", str(ex))
         w.close()
 
-    def _open_add_transaction(self, type_):
-        if not self.manager.categories:
-            sg.popup_error("No categories available. Please add a category first.")
-            return
-        category_names = [c.name for c in self.manager.categories]
-        layout = [
-            [sg.Text("Title:"), sg.Input(key="-TITLE-")],
-            [sg.Text("Amount:"), sg.Input(key="-AMOUNT-")],
-            [sg.Text("Category:"), sg.Combo(category_names, key="-CATEGORY-")],
-            [sg.Text("Date (dd/mm/YYYY):"), sg.Input(date.today().strftime("%d/%m/%Y"), key="-DATE-")],
-            [sg.Button("Add"), sg.Button("Cancel")]
-        ]
-        w = sg.Window(f"Add {type_}", layout, modal=True)
-        while True:
-            e, v = w.read()
-            if e in (sg.WINDOW_CLOSED, "Cancel"):
+def _open_add_transaction(self, type_):
+    if not self.manager.categories:
+        sg.popup_error("No categories available. Please add a category first.")
+        return
+    category_names = [c.name for c in self.manager.categories]
+    layout = [
+        [sg.Text("Title:"), sg.Input(key="-TITLE-")],
+        [sg.Text("Amount:"), sg.Input(key="-AMOUNT-")],
+        [sg.Text("Category:"), sg.Combo(category_names, key="-CATEGORY-")],
+        [sg.Text("Date (dd/mm/YYYY):"), sg.Input(date.today().strftime("%d/%m/%Y"), key="-DATE-")],
+        [sg.Button("Add"), sg.Button("Cancel")]
+    ]
+    w = sg.Window(f"Add {type_}", layout, modal=True)
+    while True:
+        e, v = w.read()
+        if e in (sg.WINDOW_CLOSED, "Cancel"):
+            break
+        if e == "Add":
+            try:
+                dt = parse_date_str(v["-DATE-"])
+                amount = float(v["-AMOUNT-"])
+                validate_positive_amount(amount)
+                self.manager.add_transaction(v["-TITLE-"], amount, v["-CATEGORY-"], type_, dt)
+                sg.popup(f"{type_} added")
+                self._refresh_table()
                 break
-            if e == "Add":
-                try:
-                    dt = parse_date_str(v["-DATE-"])
-                    amount = float(v["-AMOUNT-"])
-                    # If expense, optionally store negative amount — here we store amount positive and type_ distinguishes
-                    self.manager.add_transaction(v["-TITLE-"], amount, v["-CATEGORY-"], type_, dt)
-                    sg.popup(f"{type_} added")
-                    self._refresh_table()
-                    break
-                except Exception as ex:
-                    sg.popup_error("Error adding transaction", str(ex))
-        w.close()
+            except ValueError as ve:
+                sg.popup_error("Error:", str(ve))
+            except Exception as ex:
+                sg.popup_error("Error adding transaction", str(ex))
+    w.close()
