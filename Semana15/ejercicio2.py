@@ -23,7 +23,7 @@ def bubble_sort_reverse(numbers, in_place=True):
 
 print("Lista vacía:", bubble_sort_reverse([]))
 print("Un elemento:", bubble_sort_reverse([42]))
-print("Ya ordenada:", bubble_sort_reverse([1, 2, 3, 4]))
+print("Ordenada:", bubble_sort_reverse([1, 2, 3, 4]))
 print("Invertida:", bubble_sort_reverse([4, 3, 2, 1]))
 print("Con repetidos:", bubble_sort_reverse([3, 1, 2, 1, 3]))
 

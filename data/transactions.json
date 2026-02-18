@@ -1,0 +1,16 @@
+[
+  {
+    "date": "22/10/2025",
+    "title": "pollo",
+    "amount": 5000.0,
+    "category": "comida",
+    "type": "Expense"
+  },
+  {
+    "date": "22/10/2025",
+    "title": "Salario",
+    "amount": 205000.0,
+    "category": "salario",
+    "type": "Income"
+  }
+]
