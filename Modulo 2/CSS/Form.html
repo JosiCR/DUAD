@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+
+        <meta charset="UTF-8">
+        <title>Election Form</title>
+        <link rel="stylesheet" href="Form.css">
+
+    </head>
+    <body>
+        <h1>Election voting form</h1>
+        <div class="container">
+            <form
+                action="https://www.example.com" method="get">
+        
+                <label>Full Name:</label><br>
+                <input type="text" name="fullname" required><br>
+
+                <label>Email:</label><br>
+                <input type="email" name="email" required><br>
+
+                <label>ID Number:</label><br>
+                <input type="text" name="idnumber" required><br>
+
+                <label>Phone:</label><br>
+                <input type="tel" name="phone" required><br>
+
+                <p>Select your candidate:</p><br>
+                <label>
+                    <input type="radio" name="candidate" value="1" required>
+                    Candidate #1
+                </label>
+                <label>
+                    <input type="radio" name="candidate" value="1" required>
+                    Candidate #2
+                </label>
+                <label>
+                    <input type="radio" name="candidate" value="1" required>
+                    Candidate #3
+                </label>
+            
+                <input type="submit" value="Confirm Vote">
+            </form>
+        </div>
+    </body>
+</html>
