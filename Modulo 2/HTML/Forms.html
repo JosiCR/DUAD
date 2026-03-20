@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+
+        <meta charset="UTF-8">
+        <title>Election Form</title>
+
+    </head>
+    <body>
+        <h2>Election voting form</h2>
+        <form
+            action="https://www.example.com" method="get">
+        
+            <label>Full Name:</label><br>
+            <input type="text" name="fullname" required><br>
+
+            <label>Email:</label><br>
+            <input type="email" name="email" required><br>
+
+            <label>ID Number:</label><br>
+            <input type="text" name="idnumber" required><br>
+
+            <label>Phone:</label><br>
+            <input type="tel" name="phone" required><br>
+
+            <p>Select your candidate:</p><br>
+            <input type="radio" name="candidate" value="1" required> Candidate #1<br><br>
+            <input type="radio" name="candidate" value="2"> Candidate #2<br><br>
+            <input type="radio" name="candidate" value="3"> Candidate #3<br><br><br>
+            
+            <input type="submit" value="Confirm Vote">
+        </form>
+    </body>
+</html>
