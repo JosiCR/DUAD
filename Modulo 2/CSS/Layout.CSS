@@ -6,11 +6,11 @@ body {
 /* NAVBAR */
 .navbar {
     background-color: #7ed957;
+    width: 75%;
+    margin: auto;
 }
 
 .nav-container {
-    width: 75%;
-    margin: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
