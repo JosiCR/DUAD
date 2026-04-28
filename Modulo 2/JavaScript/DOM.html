@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>List</title>
+</head>
+<body>
+    <h1>TEST</h1>
+
+    <button id="addBtn">Add</button>
+    <button id="clearBtn">Clean</button>
+
+    <ol id="list"></ol>
+
+    <script>
+
+        const list = document.getElementById("list");
+        const addBtn = document.getElementById("addBtn");
+        const clearBtn = document.getElementById("clearBtn");
+
+        let counter = 1;
+
+
+        addBtn.addEventListener("click", function()  {
+            const li = document.createElement("li");
+            li.textContent = "Item " + counter;
+            list.appendChild(li);
+
+            counter++;
+
+        });
+
+        clearBtn.addEventListener("click", function() {
+            list.innerHTML = "";
+
+        });
+    
+    </script>
+
+</body>
+</html>
