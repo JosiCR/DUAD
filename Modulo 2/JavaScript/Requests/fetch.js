@@ -1,8 +1,14 @@
-fetch("https://api.restful-api.dev/objects")
+function listObjects(){
+    fetch("https://api.restful-api.dev/objects")
 
     .then(function(response){
 
+        if(!response.ok){
+            console.log("Error retrieving objects")
+        }
+
         return response.json();
+
     })
 
     .then(function(data){
@@ -15,5 +21,14 @@ fetch("https://api.restful-api.dev/objects")
             console.log(objectData);
         })
     })
+    .catch(function(error){
+
+        console.log("Unable to retrieve objects");
+
+    })
+
+}
+
+listObjects();
 
     
