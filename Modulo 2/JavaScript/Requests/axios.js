@@ -1,6 +1,6 @@
 const axios = require("axios");
 function listObjects(){
-    axios.get("https://api.restful-api.dev/objects")
+    axios.get("https://api.restful-api.devd/objects")
         .then(function(response){
 
             if(!Array.isArray(response.data)){
@@ -20,11 +20,23 @@ function listObjects(){
         })
         .catch(function(error){
 
-            if(error.response){
+            if(error.message === "Invalid response format"){
 
-                console.log("Failed to retrieve objects");
+                console.log("Invalid response format");
 
+            }
+            else if(error.response){
 
+                if(error.response.status === 404){
+
+                console.log("Resource not found");
+
+                }
+                else if(error.response.status >= 500){
+
+                    console.log("Server error");
+
+                }
             }
             else{
 
@@ -32,6 +44,6 @@ function listObjects(){
 
             }
 
-        })
+})
 }
 listObjects();

@@ -25,5 +25,11 @@ function updateObject(ID, newData){
     })
 
 }
+updateObject("ff8081819d82fab6019e6b7594100caa",{
+    name: "iphone",
+    data: {
+        price : 800
+    }
+});
 
 
