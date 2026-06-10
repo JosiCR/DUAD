@@ -1,0 +1,205 @@
+/* Reset */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General */
+
+body{
+    font-family: Arial, sans-serif;
+}
+
+/* Header */
+
+header{
+    border-bottom: 0.1rem solid #ddd;
+    background-color: white;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3rem;
+}
+
+.logo h1{
+    color: #6366f1;
+    font-size: 1.8rem;
+}
+
+nav{
+    display: flex;
+    gap: 1.5rem;
+}
+
+nav a{
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
+nav a:hover{
+    color: #6366f1;
+}
+
+.active{
+    color: #6366f1;
+    font-weight: bold;
+}
+
+/* Main */
+
+main{
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 3rem;
+}
+
+section{
+    margin-bottom: 4rem;
+}
+
+/* Hero Section */
+.hero-section{
+    text-align: center;
+    padding: 6rem 0;
+}
+
+.hero-section h2{
+    margin-bottom: 1rem;
+}
+
+.hero-section p{
+    margin-bottom: 1.5rem;
+}
+
+.hero-section a{
+    text-decoration: none;
+    background-color: #6366f1;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 0.5rem;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.hero-section a:hover{
+    transform: translateY(-0.15rem);
+}
+
+/* About Section */
+
+#about{
+    background-color: #f8f9fa;
+    padding: 3rem;
+    border-radius: 1rem;
+    max-width: 50rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#about h2{
+    margin-bottom: 1rem;
+}
+
+#about p{
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Login Page */
+
+.login-container{
+    max-width: 30rem;
+    margin: 4rem auto;
+    background-color: #f8f9fa;
+    padding: 3rem;
+    border-radius: 1rem;
+}
+
+.login-container h2{
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.login-container p{
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #555;
+}
+
+.login-container form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.login-container input{
+    padding: 0.8rem;
+    border: 0.1rem solid #ddd;
+    border-radius: 0.5rem;
+}
+
+.login-container button{
+    background-color: #6366f1;
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.login-container button:hover{
+    opacity: 0.9;
+}
+
+.login-container > a{
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.login-container button{
+    width: 100%;
+}
+
+.login-container input{
+    width: 100%;
+}
+
+.login-container label{
+    font-weight: 600;
+    text-align: left;
+}
+
+.register-link{
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+    color: #6366f1;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    background: none;
+}
+
+.register-link:hover{
+    text-decoration: underline;
+}
+
+
+
+
+/* Footer */
+
+footer{
+    text-align: center;
+    padding: 2rem;
+    border-top: 0.1rem solid #ddd;
+    margin-top: 4rem;
+    color: #666;
+}
