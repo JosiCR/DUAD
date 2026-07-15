@@ -1,0 +1,200 @@
+/* ==========================================
+Product Page Container
+========================================== */
+
+#productContainer{
+    max-width: 80rem;
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+
+
+/* ==========================================
+Product Card
+========================================== */
+
+.product-card{
+    display: grid;
+    grid-template-columns: 28rem 1fr;
+    gap: 4rem;
+    align-items: start;
+
+    width: 100%;
+    background-color: white;
+    padding: 3rem;
+
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08);
+}
+
+
+/* ==========================================
+Product Image
+========================================== */
+
+.product-image{
+    width: 100%;
+    height: 28rem;
+
+    object-fit: contain;
+
+    background-color: #f8f9fa;
+    padding: 2rem;
+
+    border-radius: 1rem;
+}
+
+
+/* ==========================================
+Product Information
+========================================== */
+
+.product-information{
+    width: 100%;
+    min-width: 0;
+}
+
+
+/* ==========================================
+Product Title
+========================================== */
+
+.product-title{
+    margin-bottom: 0.75rem;
+
+    color: #222;
+
+    font-size: 2.4rem;
+    line-height: 1.2;
+}
+
+
+/* ==========================================
+Product Price
+========================================== */
+
+.product-price{
+    margin-bottom: 2rem;
+
+    color: #6366f1;
+
+    font-size: 2.6rem;
+    font-weight: 700;
+}
+
+
+/* ==========================================
+Information Section Titles
+========================================== */
+
+.product-information h4{
+    margin-top: 1.5rem;
+    margin-bottom: 0.6rem;
+
+    color: #444;
+
+    font-size: 1rem;
+}
+
+
+/* ==========================================
+Product Category
+========================================== */
+
+.product-category{
+    display: inline-block;
+
+    padding: 0.5rem 1rem;
+
+    background-color: #eef2ff;
+    color: #6366f1;
+
+    border-radius: 999rem;
+
+    font-weight: 600;
+}
+
+
+/* ==========================================
+Product Stock
+========================================== */
+
+.product-stock{
+    color: #16a34a;
+
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+
+/* ==========================================
+Product Description
+========================================== */
+
+.product-description{
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 1.2rem;
+
+    background-color: #f8f9fa;
+    color: #555;
+
+    border-radius: 0.75rem;
+
+    line-height: 1.7;
+}
+
+
+/* ==========================================
+Primary Button
+========================================== */
+
+.primary-button{
+    width: 100%;
+    margin-top: 2rem;
+    padding: 1rem;
+
+    border: none;
+    border-radius: 0.5rem;
+
+    background-color: #6366f1;
+    color: white;
+
+    font-size: 1rem;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.primary-button:hover{
+    background-color: #4f46e5;
+    transform: translateY(-0.1rem);
+}
+
+
+/* ==========================================
+Secondary Button
+========================================== */
+
+.secondary-button{
+    width: 100%;
+    margin-top: 1rem;
+    padding: 1rem;
+
+    border: 0.1rem solid #6366f1;
+    border-radius: 0.5rem;
+
+    background-color: white;
+    color: #6366f1;
+
+    font-size: 1rem;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.secondary-button:hover{
+    background-color: #eef2ff;
+}

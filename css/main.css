@@ -1,4 +1,6 @@
-/* Reset */
+/* ==========================================
+Reset
+========================================== */
 
 *{
     margin: 0;
@@ -6,13 +8,19 @@
     box-sizing: border-box;
 }
 
-/* General */
+
+/* ==========================================
+General
+========================================== */
 
 body{
     font-family: Arial, sans-serif;
 }
 
-/* Header */
+
+/* ==========================================
+Header
+========================================== */
 
 header{
     border-bottom: 0.1rem solid #ddd;
@@ -23,23 +31,31 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     padding: 1rem 3rem;
 }
 
 .logo h1{
     color: #6366f1;
+
     font-size: 1.8rem;
 }
 
 nav{
     display: flex;
+    align-items: center;
+
     gap: 1.5rem;
 }
 
 nav a{
-    text-decoration: none;
     color: black;
+
+    text-decoration: none;
+
     font-weight: 500;
+
+    transition: color 0.2s;
 }
 
 nav a:hover{
@@ -48,14 +64,49 @@ nav a:hover{
 
 .active{
     color: #6366f1;
+
     font-weight: bold;
 }
 
-/* Main */
+
+/* ==========================================
+Logout Button
+========================================== */
+
+#logoutNavigationButton{
+    padding: 0;
+
+    border: none;
+
+    background: none;
+
+    color: black;
+
+    font-family: inherit;
+
+    font-size: 1rem;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition: color 0.2s;
+}
+
+#logoutNavigationButton:hover{
+    color: #dc2626;
+}
+
+
+/* ==========================================
+Main
+========================================== */
 
 main{
     max-width: 75rem;
+
     margin: 0 auto;
+
     padding: 3rem;
 }
 
@@ -63,42 +114,71 @@ section{
     margin-bottom: 4rem;
 }
 
-/* Hero Section */
+
+/* ==========================================
+Hero Section
+========================================== */
+
+/* ==========================================
+Hero Section
+========================================== */
+
 .hero-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 28rem;
+    padding: 4rem 2rem;
+    border-radius: 1rem;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.78)), url("../assets/images/pawstore-background.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     text-align: center;
-    padding: 6rem 0;
 }
 
-.hero-section h2{
+
+/* ==========================================
+Hero Content
+========================================== */
+
+.hero-content{
+    width: 100%;
+    max-width: 38rem;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.82);
+    box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.08);
+}
+
+.hero-content h2{
     margin-bottom: 1rem;
+    color: #1f2937;
+    font-size: 2.5rem;
 }
 
-.hero-section p{
-    margin-bottom: 1.5rem;
+.hero-content p{
+    margin: 0;
+    color: #4b5563;
+    font-size: 1.1rem;
+    line-height: 1.7;
 }
 
-.hero-section a{
-    text-decoration: none;
-    background-color: #6366f1;
-    color: white;
-    padding: 0.8rem 1.5rem;
-    border-radius: 0.5rem;
-    display: inline-block;
-    transition: 0.3s;
-}
-
-.hero-section a:hover{
-    transform: translateY(-0.15rem);
-}
-
-/* About Section */
+/* ==========================================
+About Section
+========================================== */
 
 #about{
-    background-color: #f8f9fa;
-    padding: 3rem;
-    border-radius: 1rem;
     max-width: 50rem;
+
     margin: 0 auto;
+
+    padding: 3rem;
+
+    border-radius: 1rem;
+
+    background-color: #f8f9fa;
+
     text-align: center;
 }
 
@@ -107,84 +187,110 @@ section{
 }
 
 #about p{
+    color: #555;
+
     line-height: 1.6;
-    color: #555;
 }
 
-/* Login Page */
 
-.login-container{
+/* ==========================================
+Authentication Pages
+========================================== */
+
+.auth-container{
     max-width: 30rem;
+
     margin: 4rem auto;
-    background-color: #f8f9fa;
+
     padding: 3rem;
+
     border-radius: 1rem;
+
+    background-color: #f8f9fa;
 }
 
-.login-container h2{
-    text-align: center;
+.auth-container h2{
     margin-bottom: 1rem;
-}
 
-.login-container p{
     text-align: center;
-    margin-bottom: 2rem;
-    color: #555;
 }
 
-.login-container form{
+.auth-container p{
+    margin-bottom: 2rem;
+
+    color: #555;
+
+    text-align: center;
+}
+
+.auth-container form{
     display: flex;
+
     flex-direction: column;
+
     gap: 1rem;
 }
 
-.login-container input{
+.auth-container label{
+    font-weight: 600;
+
+    text-align: left;
+}
+
+.auth-container input{
+    width: 100%;
+
     padding: 0.8rem;
+
     border: 0.1rem solid #ddd;
+
     border-radius: 0.5rem;
 }
 
-.login-container button{
-    background-color: #6366f1;
-    color: white;
-    border: none;
+.auth-container button{
+    width: 100%;
+
     padding: 0.8rem;
+
+    border: none;
+
     border-radius: 0.5rem;
+
+    background-color: #6366f1;
+
+    color: white;
+
     cursor: pointer;
 }
 
-.login-container button:hover{
+.auth-container button:hover{
     opacity: 0.9;
 }
 
-.login-container > a{
+.auth-container > a{
     display: block;
-    text-align: center;
+
     margin-top: 1rem;
-}
 
-.login-container button{
-    width: 100%;
-}
-
-.login-container input{
-    width: 100%;
-}
-
-.login-container label{
-    font-weight: 600;
-    text-align: left;
+    text-align: center;
 }
 
 .register-link{
     display: block;
-    text-align: center;
+
     margin-top: 1rem;
-    color: #6366f1;
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 500;
+
     background: none;
+
+    color: #6366f1;
+
+    text-align: center;
+
+    text-decoration: none;
+
+    font-size: 0.9rem;
+
+    font-weight: 500;
 }
 
 .register-link:hover{
@@ -192,14 +298,128 @@ section{
 }
 
 
+/* ==========================================
+Error Message
+========================================== */
+
+#errorMessage{
+    margin-top: 1rem;
+
+    color: red;
+
+    text-align: center;
+}
 
 
-/* Footer */
+/* ==========================================
+Footer
+========================================== */
 
 footer{
-    text-align: center;
-    padding: 2rem;
-    border-top: 0.1rem solid #ddd;
     margin-top: 4rem;
+
+    padding: 2rem;
+
+    border-top: 0.1rem solid #ddd;
+
     color: #666;
+
+    text-align: center;
+}
+
+
+/* ==========================================
+Tablet
+========================================== */
+
+@media(max-width: 48rem){
+
+    .navbar{
+        flex-direction: column;
+
+        gap: 1.25rem;
+
+        padding: 1.25rem 2rem;
+    }
+
+    nav{
+        justify-content: center;
+
+        flex-wrap: wrap;
+
+        gap: 1rem 1.5rem;
+    }
+
+    main{
+        padding: 2rem;
+    }
+
+    .hero-section{
+        padding: 4rem 0;
+    }
+
+}
+
+
+/* ==========================================
+Mobile
+========================================== */
+
+@media(max-width: 30rem){
+
+    .navbar{
+        padding: 1rem;
+    }
+
+    .logo h1{
+        font-size: 1.5rem;
+
+        text-align: center;
+    }
+
+    nav{
+        width: 100%;
+
+        gap: 0.8rem 1rem;
+    }
+
+    nav a,
+    #logoutNavigationButton{
+        font-size: 0.9rem;
+    }
+
+    main{
+        padding: 1.5rem 1rem;
+    }
+
+    section{
+        margin-bottom: 2.5rem;
+    }
+
+    .hero-section{
+        padding: 3rem 0;
+    }
+
+    .hero-section h2{
+        font-size: 1.7rem;
+    }
+
+    #about{
+        padding: 2rem 1.25rem;
+    }
+
+    .auth-container{
+        margin: 2rem auto;
+
+        padding: 2rem 1.25rem;
+    }
+
+    footer{
+        margin-top: 2rem;
+
+        padding: 1.5rem 1rem;
+
+        font-size: 0.9rem;
+    }
+
 }

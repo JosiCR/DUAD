@@ -1,70 +1,96 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="es">
 
-        <title>PawStore</title>
+<head>
 
-        <link rel="stylesheet" href="../css/main.css">
-    </head>
-    <body>
-        <header>
+    <meta charset="UTF-8">
 
-            <div class="navbar">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-                <div class="logo">
-                    <h1>PawStore</h1>
-                </div>
-                <nav>
-                    <a href="index.html" class="active">Inicio</a>
-                    <a href="catalog.html">Productos</a>
-                    <a href="#about">Acerca de</a>
-                    <a href="login.html" class="active">Iniciar Sesion</a>
-                </nav>
+    <title>PawStore | Iniciar sesión</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/auth.css">
+
+</head>
+
+<body>
+
+    <header>
+
+        <div class="navbar">
+
+            <div class="logo">
+
+                <h1>PawStore</h1>
 
             </div>
 
+            <nav>
 
-        </header>
+                <a href="index.html">🏠 Inicio</a>
 
-        <main>
-            <section class="login-container">
+                <a href="catalog.html">🐾 Catálogo</a>
 
-                <h2>Iniciar Sesion</h2>
-                <p>Ingresa tus datos para iniciar sesion</p>
+                <a href="index.html#about">ℹ Acerca de</a>
 
-                <form>
+                <a href="login.html" class="active">🔐 Iniciar sesión</a>
 
-                    <label>Correo Electronico</label>
-                    <input 
-                    type="email" 
-                    placeholder="Ingresa tu correo" 
-                    id="email">
+            </nav>
 
-                    <label>Contraseña</label>
-                    <input 
-                    type="password" 
-                    placeholder="Ingresa tu Contraseña" 
-                    id="password">
+        </div>
 
-                    <button id="loginBtn">Ingresar</button>
+    </header>
 
-                </form>
 
-                <a href="register.html" class="register-link">
-                    ¿No tienes cuenta? Regístrate
-                </a>
+    <main>
 
-            </section>
+        <section class="auth-container">
 
-        </main>
+            <h2>Iniciar sesión</h2>
 
-        <footer>
+            <p>Ingresa tus datos para acceder a tu cuenta.</p>
 
-            <p>© 2026 PawStore. Todos los derechos reservados.</p>
 
-        </footer>
+            <form>
 
-    </body>
+                <label for="email">Correo electrónico</label>
+
+                <input type="text" id="email" placeholder="Ingresa tu correo">
+
+
+                <label for="password">Contraseña</label>
+
+                <input type="password" id="password" placeholder="Ingresa tu contraseña">
+
+
+                <button type="submit" id="loginBtn">🔐 Ingresar</button>
+
+                <ul id="errorMessage"></ul>
+
+            </form>
+
+
+            <a href="register.html" class="register-link">¿No tienes cuenta? Regístrate</a>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>© 2026 PawStore. Todos los derechos reservados.</p>
+
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script src="../js/services/authService.js"></script>
+
+    <script src="../js/auth/login.js"></script>
+
+</body>
+
 </html>

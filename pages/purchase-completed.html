@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PawStore | Compra completada</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+
+    <link rel="stylesheet" href="../css/checkout.css">
+
+</head>
+
+<body>
+
+    <header>
+
+        <div class="navbar">
+
+            <div class="logo">
+
+                <h1>PawStore</h1>
+
+            </div>
+
+            <nav>
+
+                <a href="index.html">🏠 Inicio</a>
+
+                <a href="catalog.html">🐾 Catálogo</a>
+
+                <a href="cart.html">🛒 Carrito</a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <section class="purchase-completed">
+
+            <div class="purchase-completed-icon">✓</div>
+
+            <h2>¡Compra realizada!</h2>
+
+            <p>Tu pedido fue confirmado correctamente. Gracias por comprar en PawStore.</p>
+
+
+            <div id="completedOrder">
+
+                <h3>Productos comprados</h3>
+
+                <div id="completedOrderProducts">
+
+                </div>
+
+                <p id="completedOrderTotal"></p>
+
+            </div>
+
+
+            <a href="catalog.html">Volver al catálogo</a>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>© 2026 PawStore. Todos los derechos reservados.</p>
+
+    </footer>
+
+
+    <script src="../js/services/authService.js"></script>
+
+
+    <script>
+
+        checkSession();
+
+
+        const lastOrder = JSON.parse(localStorage.getItem("lastOrder")) || [];
+
+        const completedOrder = document.getElementById("completedOrder");
+
+        const completedOrderProducts = document.getElementById("completedOrderProducts");
+
+        const completedOrderTotal = document.getElementById("completedOrderTotal");
+
+
+        if (lastOrder.length === 0) {
+
+            completedOrder.style.display = "none";
+
+        }
+        else {
+
+            lastOrder.forEach(function (product) {
+
+                const productItem = document.createElement("div");
+
+                productItem.classList.add("completed-order-product");
+
+
+                const image = document.createElement("img");
+
+                image.src = product.data.image;
+
+                image.alt = product.name;
+
+
+                const information = document.createElement("div");
+
+                information.classList.add("completed-order-information");
+
+
+                const productName = document.createElement("h4");
+
+                productName.textContent = product.name;
+
+
+                const quantity = document.createElement("p");
+
+                quantity.textContent = "Cantidad: " + product.quantity;
+
+
+                const subtotal = document.createElement("p");
+
+                const productSubtotal = product.data.price * product.quantity;
+
+                subtotal.textContent = "Subtotal: ₡ " + productSubtotal.toFixed(2);
+
+
+                information.appendChild(productName);
+
+                information.appendChild(quantity);
+
+                information.appendChild(subtotal);
+
+
+                productItem.appendChild(image);
+
+                productItem.appendChild(information);
+
+
+                completedOrderProducts.appendChild(productItem);
+
+            });
+
+
+            const total = lastOrder.reduce(function (total, product) {
+
+                return total + product.data.price * product.quantity;
+
+            }, 0);
+
+
+            completedOrderTotal.textContent = "Total pagado: ₡ " + total.toFixed(2);
+
+        }
+
+    </script>
+
+</body>
+
+</html>
