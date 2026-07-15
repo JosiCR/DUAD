@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PawStore | Catálogo</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+
+    <link rel="stylesheet" href="../css/catalog.css">
+
+</head>
+
+<body>
+
+    <header>
+
+        <div class="navbar">
+
+            <div class="logo">
+
+                <h1>PawStore</h1>
+
+            </div>
+
+            <nav>
+
+                <a href="index.html">🏠 Inicio</a>
+
+                <a href="catalog.html" class="active">🐾 Catálogo</a>
+
+                <a href="cart.html">🛒 Carrito</a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <section id="catalogHeader">
+
+            <h2>Catálogo de productos</h2>
+
+            <p>Encuentra todo lo que tu mascota necesita.</p>
+
+        </section>
+
+
+        <section id="catalogFilters">
+
+            <input type="text" id="searchInput" placeholder="Buscar productos">
+
+            <select id="categoryFilter">
+
+                <option value="">Todas las categorías</option>
+
+                <option value="Alimentos">Alimentos</option>
+
+                <option value="Accesorios">Accesorios</option>
+
+                <option value="Juguetes">Juguetes</option>
+
+                <option value="Camas">Camas</option>
+
+                <option value="Hábitats">Hábitats</option>
+
+                <option value="Higiene">Higiene</option>
+
+            </select>
+
+        </section>
+
+
+        <section id="productsContainer">
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>© 2026 PawStore. Todos los derechos reservados.</p>
+
+    </footer>
+
+
+    <script src="../js/services/authService.js"></script>
+
+    <script src="../js/services/productService.js"></script>
+
+    <script src="../js/services/cartService.js"></script>
+
+    <script src="../js/catalog/catalog.js"></script>
+
+</body>
+
+</html>

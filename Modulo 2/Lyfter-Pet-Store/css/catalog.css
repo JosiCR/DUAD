@@ -1,0 +1,375 @@
+/* ========================================= */
+/* CATALOG                                   */
+/* ========================================= */
+
+main{
+    width: 90%;
+    margin: 2rem auto;
+}
+
+#catalogHeader{
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+#catalogHeader h1{
+    font-size: 2.5rem;
+    color: #1F2937;
+    margin-bottom: .5rem;
+}
+
+#catalogHeader p{
+    font-size: 1rem;
+    color: #6B7280;
+}
+
+#catalogFilters{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+
+    margin-bottom: 2rem;
+}
+
+#catalogFilters input,
+#catalogFilters select{
+
+    flex: 1;
+
+    padding: .8rem 1rem;
+
+    border: .1rem solid #D1D5DB;
+    border-radius: .6rem;
+
+    outline: none;
+
+    font-size: 1rem;
+}
+
+#catalogFilters input:focus,
+#catalogFilters select:focus{
+
+    border-color: #3B82F6;
+
+}
+
+/* ========================================= */
+/* PRODUCTS CONTAINER                        */
+/* ========================================= */
+
+#productsContainer{
+
+    display: grid;
+
+    grid-template-columns: repeat(
+        auto-fill,
+        minmax(16rem,1fr)
+    );
+
+    gap: 2rem;
+
+}
+
+article{
+
+    background: white;
+
+    border-radius: 1rem;
+
+    overflow: hidden;
+
+    box-shadow: 0 .3rem .8rem rgba(0,0,0,.08);
+
+    transition: .25s;
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+article:hover{
+
+    transform: translateY(-.3rem);
+
+    box-shadow: 0 .6rem 1.4rem rgba(0,0,0,.15);
+
+}
+
+article img{
+
+    width: 100%;
+    height: 14rem;
+
+    object-fit: cover;
+
+    background-color: #E5E7EB;
+
+}
+
+article h3{
+
+    padding: 1rem 1rem 0;
+
+    color: #111827;
+
+}
+
+article p{
+
+    padding: 0 1rem;
+
+    color: #4B5563;
+
+    margin-top: .5rem;
+
+}
+
+article button{
+
+    margin: 1rem;
+
+    margin-top: auto;
+
+    padding: .9rem;
+
+    border: none;
+
+    border-radius: .6rem;
+
+    cursor: pointer;
+
+    background-color: #3B82F6;
+
+    color: white;
+
+    font-weight: bold;
+
+    transition: .2s;
+
+}
+
+article button:hover{
+
+    background-color: #2563EB;
+
+}
+
+/* ==========================================
+Catalog Login Required
+========================================== */
+
+.catalog-login-required{
+    grid-column: 1 / -1;
+
+    width: 100%;
+
+    max-width: 36rem;
+
+    margin: 3rem auto;
+
+    padding: 3.5rem 2.5rem;
+
+    border-radius: 1rem;
+
+    background-color: white;
+
+    box-shadow:
+        0 0.3rem 1rem
+        rgba(0, 0, 0, 0.08);
+
+    text-align: center;
+}
+
+
+/* ==========================================
+Catalog State Icon
+========================================== */
+
+.catalog-state-icon{
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 5rem;
+
+    height: 5rem;
+
+    margin: 0 auto 1.5rem;
+
+    border-radius: 50%;
+
+    background-color: #eef2ff;
+
+    font-size: 2.3rem;
+}
+
+
+/* ==========================================
+Catalog Login Content
+========================================== */
+
+.catalog-login-required h2{
+    margin-bottom: 1rem;
+
+    color: #1f2937;
+
+    font-size: 1.8rem;
+}
+
+.catalog-login-required > p{
+    max-width: 28rem;
+
+    margin: 0 auto 1.75rem;
+
+    color: #6b7280;
+
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+Catalog Login Button
+========================================== */
+
+.catalog-login-button{
+    display: inline-block;
+
+    padding: 0.9rem 1.8rem;
+
+    border-radius: 0.6rem;
+
+    background-color: #6366f1;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    transition:
+        background-color 0.2s,
+        transform 0.2s;
+}
+
+.catalog-login-button:hover{
+    background-color: #4f46e5;
+
+    transform: translateY(-0.1rem);
+}
+
+
+/* ==========================================
+Catalog Register Link
+========================================== */
+
+.catalog-login-required
+.catalog-register-text{
+    margin-top: 1.5rem;
+
+    margin-bottom: 0;
+
+    color: #6b7280;
+
+    font-size: 0.95rem;
+}
+
+.catalog-register-text a{
+    color: #6366f1;
+
+    text-decoration: none;
+
+    font-weight: 600;
+}
+
+.catalog-register-text a:hover{
+    text-decoration: underline;
+}
+
+
+/* ==========================================
+Catalog Empty State
+========================================== */
+
+.catalog-empty-state{
+    grid-column: 1 / -1;
+
+    width: 100%;
+
+    max-width: 36rem;
+
+    margin: 3rem auto;
+
+    padding: 3.5rem 2.5rem;
+
+    border-radius: 1rem;
+
+    background-color: white;
+
+    box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.08);
+
+    text-align: center;
+}
+
+
+/* ==========================================
+Catalog Empty State Content
+========================================== */
+
+.catalog-empty-state h2{
+    margin-bottom: 1rem;
+
+    color: #1f2937;
+
+    font-size: 1.8rem;
+}
+
+.catalog-empty-state p{
+    max-width: 28rem;
+
+    margin: 0 auto 1.75rem;
+
+    color: #6b7280;
+
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+Catalog State Button
+========================================== */
+
+.catalog-state-button{
+    display: inline-block;
+
+    padding: 0.9rem 1.8rem;
+
+    border: none;
+
+    border-radius: 0.6rem;
+
+    background-color: #6366f1;
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.catalog-state-button:hover{
+    background-color: #4f46e5;
+
+    transform: translateY(-0.1rem);
+}

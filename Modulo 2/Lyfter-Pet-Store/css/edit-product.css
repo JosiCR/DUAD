@@ -1,0 +1,214 @@
+/* ==========================================
+Product Form Section
+========================================== */
+
+.product-form-section{
+    max-width: 55rem;
+
+    margin: 3rem auto;
+
+    padding: 0 2rem;
+}
+
+
+/* ==========================================
+Product Form Header
+========================================== */
+
+.product-form-header{
+    margin-bottom: 2rem;
+}
+
+.product-form-header h2{
+    margin-bottom: 0.5rem;
+
+    color: #222;
+
+    font-size: 2.2rem;
+}
+
+.product-form-header p{
+    color: #666;
+
+    line-height: 1.5;
+}
+
+
+/* ==========================================
+Product Form
+========================================== */
+
+#productForm{
+    padding: 2.5rem;
+
+    background-color: white;
+
+    border-radius: 1rem;
+
+    box-shadow:
+        0 0.3rem 1rem
+        rgba(0, 0, 0, 0.08);
+}
+
+
+/* ==========================================
+Form Row
+========================================== */
+
+.form-row{
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 1.5rem;
+}
+
+
+/* ==========================================
+Form Group
+========================================== */
+
+.form-group{
+    display: flex;
+
+    flex-direction: column;
+
+    margin-bottom: 1.5rem;
+}
+
+.form-group label{
+    margin-bottom: 0.5rem;
+
+    color: #333;
+
+    font-size: 0.95rem;
+
+    font-weight: 600;
+}
+
+
+/* ==========================================
+Form Fields
+========================================== */
+
+.form-group input,
+.form-group textarea{
+    width: 100%;
+
+    padding: 0.9rem 1rem;
+
+    border:
+        0.1rem solid #d1d5db;
+
+    border-radius: 0.5rem;
+
+    background-color: white;
+
+    color: #222;
+
+    font-family: inherit;
+
+    font-size: 1rem;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+.form-group textarea{
+    min-height: 8rem;
+
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 0 0.2rem
+        rgba(99, 102, 241, 0.15);
+}
+
+
+/* ==========================================
+Product Form Actions
+========================================== */
+
+.product-form-actions{
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 1rem;
+
+    margin-top: 0.5rem;
+}
+
+
+/* ==========================================
+Cancel Button
+========================================== */
+
+.cancel-button{
+    padding: 0.9rem 1.5rem;
+
+    border:
+        0.1rem solid #6366f1;
+
+    border-radius: 0.5rem;
+
+    background-color: white;
+
+    color: #6366f1;
+
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s,
+        color 0.2s;
+}
+
+.cancel-button:hover{
+    background-color: #eef2ff;
+}
+
+
+/* ==========================================
+Save Product Button
+========================================== */
+
+.save-product-button{
+    padding: 0.9rem 1.5rem;
+
+    border: none;
+
+    border-radius: 0.5rem;
+
+    background-color: #6366f1;
+
+    color: white;
+
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.3s,
+        transform 0.3s;
+}
+
+.save-product-button:hover{
+    background-color: #4f46e5;
+
+    transform: translateY(-0.1rem);
+}
