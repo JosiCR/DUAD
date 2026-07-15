@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PawStore | Finalizar compra</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+
+    <link rel="stylesheet" href="../css/checkout.css">
+
+</head>
+
+<body>
+
+    <header>
+
+        <div class="navbar">
+
+            <div class="logo">
+
+                <h1>PawStore</h1>
+
+            </div>
+
+            <nav>
+
+                <a href="index.html">🏠 Inicio</a>
+
+                <a href="catalog.html">🐾 Catálogo</a>
+
+                <a href="cart.html">🛒 Carrito</a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <section class="checkout-section">
+
+            <h2>Finalizar compra</h2>
+
+
+            <div class="checkout-layout">
+
+                <form id="checkoutForm">
+
+                    <h3>Información de entrega</h3>
+
+
+                    <div class="form-group">
+
+                        <label for="fullName">Nombre completo</label>
+
+                        <input type="text" id="fullName" required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="email">Correo electrónico</label>
+
+                        <input type="email" id="email" required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="phone">Número de teléfono</label>
+
+                        <input type="tel" id="phone" required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="address">Dirección de entrega</label>
+
+                        <textarea id="address" rows="4" required></textarea>
+
+                    </div>
+
+
+                    <button type="submit" class="confirm-order-button">
+                        Confirmar pedido
+                    </button>
+
+                </form>
+
+
+                <aside id="checkoutSummary">
+
+                </aside>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>© 2026 PawStore. Todos los derechos reservados.</p>
+
+    </footer>
+
+
+    <script src="../js/services/authService.js"></script>
+
+    <script src="../js/services/cartService.js"></script>
+
+    <script src="../js/cart/checkout.js"></script>
+
+</body>
+
+</html>

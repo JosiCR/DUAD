@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<HTML>
+<head></head>
+<BODY>
+
+
+    <form>
+        <input type="email" id="email">
+        <input type="password" id="password">
+        <input type="text" id="name">
+        <input type="text" id="lastName">
+        <input type="radio" id="yes" name="option" value="yes"> Yes
+        <input type="radio" id="no" name="option" value="no"> No
+        <input type="text" id="job" hidden>
+
+    </form>
+
+    <script>
+
+        const yes = document.getElementById("yes");
+        const no = document.getElementById("no");
+        const job = document.getElementById("job");
+
+        yes.addEventListener ("change", function() {
+            job.hidden = false;
+
+        });
+
+
+        no.addEventListener("change", function() {
+        job.hidden = true;
+
+        });
+
+
+    </script>
+
+
+
+
+
+</BODY>
+</HTML>
