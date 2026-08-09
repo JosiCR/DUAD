@@ -54,7 +54,7 @@ OwnerID      OwnerName    OwnerPhone     InsuranceCompany    InsurancePolicy
 104          Dave         111-222-3333   GHI Insurance       Basic Legal
 
 
-### CarOwners (Actualizada)
+### CarOwners 
 VIN           OwnerID
 ------------  ---------
 1HGCM82633A   101
@@ -66,20 +66,25 @@ VIN           OwnerID
 ## Tercera Forma Normal (3FN)
 Justificación
 
-Se identificó que los atributos Make, Model y Year describen el modelo del vehículo y no al vehículo identificado por el VIN.
-Por eso, se creó la tabla CarModels y la tabla Cars pasó a almacenar únicamente una referencia al modelo mediante ModelID.
+Se separaron las marcas y las compañías de seguros en tablas independientes para evitar 
+la repetición de información. Cars Models utiliza MakeID para relacionarse con Makes, 
+mientras que InsurancePolicies utiliza CompanyID para relacionarse con InsuranceCompanies. 
+De esta forma, una misma marca puede tener varios modelos y una misma compañía puede tener 
+varias pólizas sin duplicar sus datos.
 
-Además, se identificó que la información de la póliza de seguro puede ser compartida por varios propietarios. Para evitar repetir 
-la compañía de seguros y la póliza en cada propietario, se creó la tabla InsurancePolicies y la tabla Owners pasó a almacenar 
-únicamente PolicyID como referencia.
+### Makes
+MakeID      Make
+------      ---------
+1           Honda
+2           Chevrolet
 
 
 ### Cars Models
-ModelID     Make         Model      Year
-----------  -----------  ---------  ------
-1           Honda        Accord     2003
-2           Honda        CR-V       2014
-3           Chevrolet    Volt       2015
+ModelID     MakeID      Model       Year
+--------    --------    ---------   ------
+1           1           Accord      2003
+2           1           CR-V        2014
+3           2           Volt        2015
 
 
 ### Cars
@@ -90,13 +95,22 @@ VIN           ModelID    Color
 1G1RA6EH1FU   3          Red
 
 
+### InsuranceCompanies
+CompanyID    CompanyName
+---------    --------------
+1            ABC Insurance
+2            XYZ Insurance
+3            DEF Insurance
+4            GHI Insurance
+
+
 ### InsurancePolicies
-PolicyID    InsuranceCompany    InsurancePolicy
-----------  ------------------  ----------------
-1           ABC Insurance       Fire & Theft
-2           XYZ Insurance       Full Cover
-3           DEF Insurance       Collision
-4           GHI Insurance       Basic Legal
+PolicyID    CompanyID    InsurancePolicy
+--------    ---------    ----------------
+1           1            Fire & Theft
+2           2            Full Cover
+3           3            Collision
+4           4            Basic Legal
 
 
 ### Owners
@@ -110,29 +124,46 @@ OwnerID      OwnerName    OwnerPhone     PolicyID
 
 ## Resultado Final
 
+
+### Makes
+MakeID      Make
+------      ---------
+1           Honda
+2           Chevrolet
+
+
 ### Cars Models
-ModelID     Make         Model      Year
-----------  -----------  ---------  ------
-1           Honda        Accord     2003
-2           Honda        CR-V       2014
-3           Chevrolet    Volt       2015
+ModelID     MakeID      Model       Year
+--------    --------    ---------   ------
+1           1           Accord      2003
+2           1           CR-V        2014
+3           2           Volt        2015
 
 
 ### Cars
-VIN           ModelID    Color
-------------  ---------  -------
-1HGCM82633A   1          Silver
-5J6RM4H79EL   2          Blue
-1G1RA6EH1FU   3          Red
+VIN           ModelID     Color
+------------  ---------   -------
+1HGCM82633A   1           Silver
+5J6RM4H79EL   2           Blue
+1G1RA6EH1FU   3           Red
+
+
+### InsuranceCompanies
+CompanyID    CompanyName
+---------    --------------
+1            ABC Insurance
+2            XYZ Insurance
+3            DEF Insurance
+4            GHI Insurance
 
 
 ### InsurancePolicies
-PolicyID    InsuranceCompany    InsurancePolicy
-----------  ------------------  ----------------
-1           ABC Insurance       Fire & Theft
-2           XYZ Insurance       Full Cover
-3           DEF Insurance       Collision
-4           GHI Insurance       Basic Legal
+PolicyID    CompanyID    InsurancePolicy
+--------    ---------    ----------------
+1           1            Fire & Theft
+2           2            Full Cover
+3           3            Collision
+4           4            Basic Legal
 
 
 ### Owners
