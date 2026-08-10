@@ -66,11 +66,10 @@ VIN           OwnerID
 ## Tercera Forma Normal (3FN)
 Justificación
 
-Se separaron las marcas y las compañías de seguros en tablas independientes para evitar 
-la repetición de información. Cars Models utiliza MakeID para relacionarse con Makes, 
-mientras que InsurancePolicies utiliza CompanyID para relacionarse con InsuranceCompanies. 
-De esta forma, una misma marca puede tener varios modelos y una misma compañía puede tener 
-varias pólizas sin duplicar sus datos.
+Se separaron Makes e InsuranceCompanies para evitar repetir la misma información en diferentes registros.
+Cars Models utiliza MakeID para relacionarse con Makes, mientras que InsurancePolicies utiliza CompanyID 
+para relacionarse con InsuranceCompanies. Además, PolicyID se trasladó de Owners a Cars, ya que la 
+póliza de seguro corresponde directamente al vehículo y no al propietario.
 
 ### Makes
 MakeID      Make
@@ -88,11 +87,11 @@ ModelID     MakeID      Model       Year
 
 
 ### Cars
-VIN           ModelID    Color
-------------  ---------  -------
-1HGCM82633A   1          Silver
-5J6RM4H79EL   2          Blue
-1G1RA6EH1FU   3          Red
+VIN           ModelID     PolicyID    Color
+------------  ---------   ---------   -------
+1HGCM82633A   1           1           Silver
+5J6RM4H79EL   2           2           Blue
+1G1RA6EH1FU   3           3           Red
 
 
 ### InsuranceCompanies
@@ -114,12 +113,12 @@ PolicyID    CompanyID    InsurancePolicy
 
 
 ### Owners
-OwnerID      OwnerName    OwnerPhone     PolicyID
------------  -----------  -------------  --------
-101          Alice        123-456-7890   1
-102          Bob          987-654-3210   2
-103          Claire       555-123-4567   3
-104          Dave         111-222-3333   4
+OwnerID      OwnerName    OwnerPhone
+-----------  -----------  -------------
+101          Alice        123-456-7890
+102          Bob          987-654-3210
+103          Claire       555-123-4567
+104          Dave         111-222-3333
 
 
 ## Resultado Final
@@ -141,11 +140,11 @@ ModelID     MakeID      Model       Year
 
 
 ### Cars
-VIN           ModelID     Color
-------------  ---------   -------
-1HGCM82633A   1           Silver
-5J6RM4H79EL   2           Blue
-1G1RA6EH1FU   3           Red
+VIN           ModelID     PolicyID    Color
+------------  ---------   ---------   -------
+1HGCM82633A   1           1           Silver
+5J6RM4H79EL   2           2           Blue
+1G1RA6EH1FU   3           3           Red
 
 
 ### InsuranceCompanies
@@ -167,13 +166,12 @@ PolicyID    CompanyID    InsurancePolicy
 
 
 ### Owners
-OwnerID      OwnerName    OwnerPhone     PolicyID
------------  -----------  -------------  --------
-101          Alice        123-456-7890   1
-102          Bob          987-654-3210   2
-103          Claire       555-123-4567   3
-104          Dave         111-222-3333   4
-
+OwnerID      OwnerName    OwnerPhone
+-----------  -----------  -------------
+101          Alice        123-456-7890
+102          Bob          987-654-3210
+103          Claire       555-123-4567
+104          Dave         111-222-3333
 
 ### CarOwners
 VIN           OwnerID
