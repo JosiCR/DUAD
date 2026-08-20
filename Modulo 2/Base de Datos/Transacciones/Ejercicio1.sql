@@ -20,7 +20,8 @@ CREATE TABLE Bills (
     ID SERIAL PRIMARY KEY,
     UserID INTEGER NOT NULL,
     Date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    State VARCHAR(20) NOT NULL DEFAULT 'Active',
+    State VARCHAR(20) NOT NULL DEFAULT 'Active'
+        CHECK (State IN ('Active', 'Returned')),
     FOREIGN KEY (UserID) REFERENCES Users(ID)
 );
 

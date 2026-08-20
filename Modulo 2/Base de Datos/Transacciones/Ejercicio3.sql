@@ -5,14 +5,15 @@ DECLARE
     producto RECORD;
 BEGIN
 
-    -- 1. Verificar que la factura exista
+    -- 1. Verificar que la factura exista y no haya sido retornada
     IF NOT EXISTS (
         SELECT 1
         FROM Bills
         WHERE ID = factura_id
-    ) THEN
+        AND State <> 'Returned'
+    )THEN
         RAISE EXCEPTION
-            'La factura % no existe.',
+            'La factura % no existe o ya fue retornada.',
             factura_id;
     END IF;
 
@@ -44,5 +45,7 @@ BEGIN
     RAISE NOTICE
         'La factura % fue retornada correctamente.',
         factura_id;
+
+
 
 END $$;
