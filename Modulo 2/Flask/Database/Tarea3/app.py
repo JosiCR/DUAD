@@ -1,6 +1,28 @@
 from flask import Flask, request, jsonify
 import psycopg
 
+from repositories.user_repository import (
+    get_users,
+    create_user,
+    update_user_status,
+    flag_user_delinquent
+)
+
+from repositories.car_repository import (
+    get_cars,
+    create_car,
+    update_car_status,
+    get_car_status
+)
+
+from repositories.rental_repository import (
+    get_rentals,
+    create_rental,
+    get_rental_car,
+    complete_rental,
+    update_rental_status
+)
+
 
 app = Flask(__name__)
 
@@ -11,7 +33,7 @@ def get_connection():
         port=5432,
         dbname="postgres",
         user="postgres",
-        password="YOUR_POSTGRES_PASSWORD"
+        password="JosiCR_14"
     )
     return connection
 
@@ -22,44 +44,17 @@ def home():
 
 
 @app.route("/users")
-def get_users():
+def list_users():
     filters = request.args.to_dict()
 
-    allowed_columns = [
-        "id",
-        "name",
-        "email",
-        "username",
-        "password",
-        "birth_date",
-        "account_status"
-    ]
-
     connection = get_connection()
-    cursor = connection.cursor()
 
-    query = "SELECT * FROM lyfter_car_rental.users"
-    values = []
+    users, error = get_users(connection, filters)
 
-    if filters:
-        conditions = []
-
-        for column, value in filters.items():
-            if column not in allowed_columns:
-                cursor.close()
-                connection.close()
-                return "Invalid filter column", 400
-
-            conditions.append(f"{column} = %s")
-            values.append(value)
-
-        query += " WHERE " + " AND ".join(conditions)
-
-    cursor.execute(query, values)
-    users = cursor.fetchall()
-
-    cursor.close()
     connection.close()
+
+    if error:
+        return error, 400
 
     result = []
 
@@ -69,155 +64,79 @@ def get_users():
             "name": user[1],
             "email": user[2],
             "username": user[3],
-            "password": user[4],
-            "birth_date": str(user[5]),
-            "account_status": user[6]
+            "birth_date": str(user[4]),
+            "account_status": user[5]
         })
 
     return jsonify(result)
 
 
-
 @app.route("/users", methods=["POST"])
-def create_user():
+def add_user():
     data = request.get_json()
 
     connection = get_connection()
-    cursor = connection.cursor()
 
-    cursor.execute("""
-        INSERT INTO lyfter_car_rental.users (
-            name,
-            email,
-            username,
-            password,
-            birth_date
-        )
-        VALUES (%s, %s, %s, %s, %s)
-    """, (
-        data["name"],
-        data["email"],
-        data["username"],
-        data["password"],
-        data["birth_date"]
-    ))
+    create_user(connection, data)
 
-    connection.commit()
-
-    cursor.close()
     connection.close()
 
-    return "User created successfully!"
+    return "User created successfully!", 201
 
 
 @app.route("/users/<int:user_id>/status", methods=["PUT"])
-def update_user_status(user_id):
+def change_user_status(user_id):
     data = request.get_json()
 
     connection = get_connection()
-    cursor = connection.cursor()
 
-    cursor.execute("""
-        UPDATE lyfter_car_rental.users
-        SET account_status = %s
-        WHERE id = %s
-    """, (
-        data["status"],
-        user_id
-    ))
+    update_user_status(
+        connection,
+        user_id,
+        data["status"]
+    )
 
-    connection.commit()
-
-    cursor.close()
     connection.close()
 
     return "User status updated successfully!"
 
 
-
 @app.route("/users/<int:user_id>/delinquent", methods=["PUT"])
-def flag_user_delinquent(user_id):
+def flag_delinquent(user_id):
     connection = get_connection()
-    cursor = connection.cursor()
 
-    cursor.execute("""
-        UPDATE lyfter_car_rental.users
-        SET account_status = 'Delinquent'
-        WHERE id = %s
-    """, (user_id,))
+    flag_user_delinquent(connection, user_id)
 
-    connection.commit()
-
-    cursor.close()
     connection.close()
 
     return "User flagged as delinquent successfully!"
 
 
 @app.route("/cars", methods=["POST"])
-def create_car():
+def add_car():
     data = request.get_json()
 
     connection = get_connection()
-    cursor = connection.cursor()
 
-    cursor.execute("""
-        INSERT INTO lyfter_car_rental.cars (
-            brand,
-            model,
-            manufacturing_year
-        )
-        VALUES (%s, %s, %s)
-    """, (
-        data["brand"],
-        data["model"],
-        data["manufacturing_year"]
-    ))
+    create_car(connection, data)
 
-    connection.commit()
-
-    cursor.close()
     connection.close()
 
-    return "Car created successfully!"
+    return "Car created successfully!", 201
+
 
 @app.route("/cars")
-def get_cars():
+def list_cars():
     filters = request.args.to_dict()
 
-    allowed_columns = [
-        "id",
-        "brand",
-        "model",
-        "manufacturing_year",
-        "status"
-    ]
-
     connection = get_connection()
-    cursor = connection.cursor()
 
-    query = "SELECT * FROM lyfter_car_rental.cars"
-    values = []
+    cars, error = get_cars(connection, filters)
 
-    if filters:
-        conditions = []
-
-        for column, value in filters.items():
-            if column not in allowed_columns:
-                cursor.close()
-                connection.close()
-                return "Invalid filter column", 400
-
-            conditions.append(f"{column} = %s")
-            values.append(value)
-
-        query += " WHERE " + " AND ".join(conditions)
-
-    cursor.execute(query, values)
-    cars = cursor.fetchall()
-
-    cursor.close()
     connection.close()
+
+    if error:
+        return error, 400
 
     result = []
 
@@ -234,118 +153,64 @@ def get_cars():
 
 
 @app.route("/cars/<int:car_id>/status", methods=["PUT"])
-def update_car_status(car_id):
+def change_car_status(car_id):
     data = request.get_json()
 
     connection = get_connection()
-    cursor = connection.cursor()
 
-    cursor.execute("""
-        UPDATE lyfter_car_rental.cars
-        SET status = %s
-        WHERE id = %s
-    """, (
-        data["status"],
-        car_id
-    ))
+    update_car_status(
+        connection,
+        car_id,
+        data["status"]
+    )
 
-    connection.commit()
-
-    cursor.close()
     connection.close()
 
     return "Car status updated successfully!"
 
 
-
 @app.route("/rentals", methods=["POST"])
-def create_rental():
+def add_rental():
     data = request.get_json()
 
     connection = get_connection()
-    cursor = connection.cursor()
 
-    cursor.execute("""
-        SELECT status
-        FROM lyfter_car_rental.cars
-        WHERE id = %s
-    """, (data["car_id"],))
-
-    car = cursor.fetchone()
+    car = get_car_status(
+        connection,
+        data["car_id"]
+    )
 
     if car is None:
-        cursor.close()
         connection.close()
         return "Car not found", 404
 
     if car[0] != "Available":
-        cursor.close()
         connection.close()
         return "Car is not available", 400
 
-    cursor.execute("""
-        INSERT INTO lyfter_car_rental.rentals (
-            user_id,
-            car_id
-        )
-        VALUES (%s, %s)
-    """, (
+    create_rental(
+        connection,
         data["user_id"],
         data["car_id"]
-    ))
+    )
 
-    cursor.execute("""
-        UPDATE lyfter_car_rental.cars
-        SET status = 'Rented'
-        WHERE id = %s
-    """, (data["car_id"],))
-
-    connection.commit()
-
-    cursor.close()
     connection.close()
 
-    return "Rental created successfully!"
-
+    return "Rental created successfully!", 201
 
 
 @app.route("/rentals")
-def get_rentals():
+def list_rentals():
     filters = request.args.to_dict()
 
-    allowed_columns = [
-        "id",
-        "user_id",
-        "car_id",
-        "rental_date",
-        "status"
-    ]
-
     connection = get_connection()
-    cursor = connection.cursor()
 
-    query = "SELECT * FROM lyfter_car_rental.rentals"
-    values = []
+    rentals, error = get_rentals(connection, filters)
 
-    if filters:
-        conditions = []
-
-        for column, value in filters.items():
-            if column not in allowed_columns:
-                cursor.close()
-                connection.close()
-                return "Invalid filter column", 400
-
-            conditions.append(f"{column} = %s")
-            values.append(value)
-
-        query += " WHERE " + " AND ".join(conditions)
-
-    cursor.execute(query, values)
-    rentals = cursor.fetchall()
-
-    cursor.close()
     connection.close()
+
+    if error:
+        return error, 400
 
     result = []
 
@@ -362,68 +227,47 @@ def get_rentals():
 
 
 @app.route("/rentals/<int:rental_id>/complete", methods=["PUT"])
-def complete_rental(rental_id):
+def finish_rental(rental_id):
     connection = get_connection()
-    cursor = connection.cursor()
 
-    cursor.execute("""
-        SELECT car_id
-        FROM lyfter_car_rental.rentals
-        WHERE id = %s
-    """, (rental_id,))
-
-    rental = cursor.fetchone()
+    rental = get_rental_car(
+        connection,
+        rental_id
+    )
 
     if rental is None:
-        cursor.close()
         connection.close()
         return "Rental not found", 404
 
     car_id = rental[0]
 
-    cursor.execute("""
-        UPDATE lyfter_car_rental.rentals
-        SET status = 'Completed'
-        WHERE id = %s
-    """, (rental_id,))
+    complete_rental(
+        connection,
+        rental_id,
+        car_id
+    )
 
-    cursor.execute("""
-        UPDATE lyfter_car_rental.cars
-        SET status = 'Available'
-        WHERE id = %s
-    """, (car_id,))
-
-    connection.commit()
-
-    cursor.close()
     connection.close()
 
     return "Rental completed successfully!"
 
 
-
 @app.route("/rentals/<int:rental_id>/status", methods=["PUT"])
-def update_rental_status(rental_id):
+def change_rental_status(rental_id):
     data = request.get_json()
 
     connection = get_connection()
-    cursor = connection.cursor()
 
-    cursor.execute("""
-        UPDATE lyfter_car_rental.rentals
-        SET status = %s
-        WHERE id = %s
-    """, (
-        data["status"],
-        rental_id
-    ))
+    update_rental_status(
+        connection,
+        rental_id,
+        data["status"]
+    )
 
-    connection.commit()
-
-    cursor.close()
     connection.close()
 
     return "Rental status updated successfully!"
+
 
 if __name__ == "__main__":
     app.run(debug=True)
