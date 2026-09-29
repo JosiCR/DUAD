@@ -59,7 +59,7 @@ class CarManager:
         if car is None or user is None:
             return False
 
-        car.user_id = user.id
+        car.user = user
 
         self.session.commit()
         self.session.refresh(car)
