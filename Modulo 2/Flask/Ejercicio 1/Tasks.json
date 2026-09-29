@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "title": "Learn Flask",
+        "description": "Create my first Flask API",
+        "status": "To Do"
+    },
+    {
+        "id": 3,
+        "title": "Practice API",
+        "description": "Practice the CRUD endpoints",
+        "status": "In Progress"
+    }
+]

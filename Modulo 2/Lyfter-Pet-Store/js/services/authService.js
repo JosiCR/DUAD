@@ -35,6 +35,28 @@ function initializeAdminUser() {
 
 
 /* ==========================================
+Get Registered Users
+========================================== */
+
+function getRegisteredUsers() {
+
+    return JSON.parse(localStorage.getItem("registeredUsers")) || [];
+
+}
+
+
+/* ==========================================
+Save Registered Users
+========================================== */
+
+function saveRegisteredUsers(users) {
+
+    localStorage.setItem("registeredUsers", JSON.stringify(users));
+
+}
+
+
+/* ==========================================
 Register User
 ========================================== */
 
@@ -42,8 +64,25 @@ async function registerUser(user) {
 
     try {
 
-        const response = await axios.post("https://api.restful-api.dev/objects", user);
+        const registeredUsers = getRegisteredUsers();
 
+        const emailExists = registeredUsers.some(function (registeredUser) {
+            return registeredUser.email === user.data.email;
+        });
+
+        if (emailExists || adminUser.email === user.data.email) {
+
+            return {
+
+                success: false,
+
+                error: "Ya existe una cuenta registrada con ese correo."
+
+            };
+
+        }
+
+        const response = await axios.post("https://api.restful-api.dev/objects", user);
 
         const registeredUser = {
 
@@ -59,9 +98,9 @@ async function registerUser(user) {
 
         };
 
+        registeredUsers.push(registeredUser);
 
-        localStorage.setItem("registeredUser", JSON.stringify(registeredUser));
-
+        saveRegisteredUsers(registeredUsers);
 
         return {
 
@@ -103,7 +142,6 @@ async function registerUser(user) {
 
         }
 
-
         return {
 
             success: false,
@@ -123,24 +161,22 @@ Login User
 
 async function loginUser(email, password) {
 
-    const savedUser = JSON.parse(localStorage.getItem("registeredUser"));
-
-    const savedAdmin = JSON.parse(localStorage.getItem("adminUser"));
-
     let user = null;
 
+    if (adminUser.email === email) {
 
-    if (savedAdmin && savedAdmin.email === email) {
-
-        user = savedAdmin;
-
-    }
-    else if (savedUser && savedUser.email === email) {
-
-        user = savedUser;
+        user = adminUser;
 
     }
+    else {
 
+        const registeredUsers = getRegisteredUsers();
+
+        user = registeredUsers.find(function (registeredUser) {
+            return registeredUser.email === email;
+        });
+
+    }
 
     if (!user) {
 
@@ -154,7 +190,6 @@ async function loginUser(email, password) {
 
     }
 
-
     if (user.password !== password) {
 
         return {
@@ -166,7 +201,6 @@ async function loginUser(email, password) {
         };
 
     }
-
 
     return {
 
@@ -214,7 +248,6 @@ function checkAdminSession() {
 
 }
 
-
 /* ==========================================
 Display Admin Navigation
 ========================================== */
@@ -229,7 +262,6 @@ function displayAdminNavigation() {
 
     }
 
-
     const navigation = document.querySelector("nav");
 
     if (!navigation) {
@@ -237,7 +269,6 @@ function displayAdminNavigation() {
         return;
 
     }
-
 
     const existingAdminLink = document.getElementById("adminNavigationLink");
 
@@ -247,7 +278,6 @@ function displayAdminNavigation() {
 
     }
 
-
     const adminLink = document.createElement("a");
 
     adminLink.id = "adminNavigationLink";
@@ -255,7 +285,6 @@ function displayAdminNavigation() {
     adminLink.href = "admin.html";
 
     adminLink.textContent = "⚙ Administrador";
-
 
     navigation.appendChild(adminLink);
 
@@ -289,7 +318,6 @@ function displayLogoutNavigation() {
 
     }
 
-
     const navigation = document.querySelector("nav");
 
     if (!navigation) {
@@ -297,7 +325,6 @@ function displayLogoutNavigation() {
         return;
 
     }
-
 
     const existingLogoutButton = document.getElementById("logoutNavigationButton");
 
@@ -307,7 +334,6 @@ function displayLogoutNavigation() {
 
     }
 
-
     const logoutButton = document.createElement("button");
 
     logoutButton.id = "logoutNavigationButton";
@@ -315,7 +341,6 @@ function displayLogoutNavigation() {
     logoutButton.type = "button";
 
     logoutButton.textContent = "↪ Cerrar sesión";
-
 
     logoutButton.addEventListener("click", function () {
 
@@ -330,7 +355,6 @@ function displayLogoutNavigation() {
         logoutUser();
 
     });
-
 
     navigation.appendChild(logoutButton);
 
