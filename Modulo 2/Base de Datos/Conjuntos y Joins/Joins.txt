@@ -1,0 +1,13 @@
+Tabla informativa sobre SELECT y sus funcionalidades
+
+Elemento        Función                                      Ejemplo
+--------------  -------------------------------------------  ---------------------------------------------
+SELECT          Selecciona la información que queremos ver.  SELECT Name FROM Books;
+ORDER BY        Ordena los resultados.                       SELECT * FROM Books ORDER BY Name;
+LIMIT           Limita la cantidad de resultados.            SELECT * FROM Books LIMIT 3;
+GROUP BY        Agrupa registros con valores en común.       SELECT Author, COUNT(*) FROM Books GROUP BY Author;
+INNER JOIN      Devuelve coincidencias entre dos tablas.     SELECT * FROM Books INNER JOIN Authors ON Books.Author = Authors.ID;
+LEFT JOIN       Conserva todos los registros de la izquierda
+                y las coincidencias de la derecha.           SELECT * FROM Books LEFT JOIN Authors ON Books.Author = Authors.ID;
+RIGHT JOIN      Conserva todos los registros de la derecha
+                y las coincidencias de la izquierda.         SELECT * FROM Books RIGHT JOIN Authors ON Books.Author = Authors.ID;

@@ -1,0 +1,1 @@
+CREATE SCHEMA lyfter_car_rental;
